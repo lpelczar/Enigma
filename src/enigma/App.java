@@ -1,18 +1,37 @@
 package enigma;
 
-import services.EnigmaService;
 import app.Module;
 
 public class App {
 
-	public static void main(String... args){
+    private static ServiceRepository repo;
+    private final String[] args;
 
-		FakeServiceRepository repo = new FakeServiceRepository();
-		repo.register(new FakeEnigma());
+    public App(String[] args) {
+        this.args = args;
+    }
 
-		Module module = new FakeModule();
-		module.initialize(repo);
-		module.start();
+    public static void main(String... args) {
 
-	}
+        new App(args).start();
+
+    }
+
+    private void start() {
+        repo = new ServiceRepository();
+        repo.register(new FakeEnigma("ROT13"));
+        repo.register(new FakeEnigma("FakeEnigma"));
+
+        if (args[0].equals("-l")) {
+            for (String s : repo.listAll()) {
+                System.out.println(s);
+            }
+            return;
+        }
+
+
+        Module module = new TerminalTranslator(args);
+        module.initialize(repo);
+        module.start();
+    }
 }

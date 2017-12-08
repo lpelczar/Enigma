@@ -5,20 +5,22 @@ import services.EnigmaService;
 public class FakeEnigma implements EnigmaService {
 
 	public static final boolean KEY_REQUIRED = false;
+	private String name;
 
-	public FakeEnigma(){
+	public FakeEnigma(String name){
+		this.name = name;
 	}
 
 	public String encipher(String text){
-		return "###### ciphered: "+text+" #####";
+		return text;
 	}
 
 	public String decipher(String text){
-		return "###### deciphered: "+text+" #####";
-	}
+	return text;
+}
 
 	public String getName(){
-		return "FakeEnigma";
+		return this.name;
 	}
 
 	public boolean isKeyRequired(){

@@ -8,11 +8,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class FakeServiceRepository implements ServiceRegistry, ServiceProvider {
+public class ServiceRepository implements ServiceRegistry, ServiceProvider {
 
 	LinkedList<EnigmaService> services;
 
-	public FakeServiceRepository(){
+	public ServiceRepository(){
 		this.services = new LinkedList<EnigmaService>();
 	}
 
