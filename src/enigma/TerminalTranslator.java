@@ -26,14 +26,15 @@ public class TerminalTranslator implements Module {
     public void start() {
         String mode = args[0];
         String enigmaName = args[1];
-        EnigmaService enigma = provider.getByName("FakeEnigma");
+        EnigmaService enigma = provider.getByName(enigmaName);
 
         Scanner scan = new Scanner(System.in);
         while (scan.hasNextLine()) {
-            if (this.args[1].equals("FakeEnigma")) {
-                System.out.println(enigma.encipher(scan.nextLine() + "X"));
-            } else {
+            if (this.args[0].equals("-e")) {
                 System.out.println(enigma.encipher(scan.nextLine()));
+            } else if (this.args[0].equals("-d")) {
+                System.out.println(enigma.decipher((scan.nextLine())));
+
             }
         }
     }

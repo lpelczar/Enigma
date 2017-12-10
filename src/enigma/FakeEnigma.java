@@ -12,11 +12,11 @@ public class FakeEnigma implements EnigmaService {
 	}
 
 	public String encipher(String text){
-		return text;
+		return "enc("+text+")";
 	}
 
 	public String decipher(String text){
-	return text;
+	return "dec("+text+")";
 }
 
 	public String getName(){
