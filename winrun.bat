@@ -1,1 +1,1 @@
-java -classpath bin enigma.App
+java -classpath bin enigma.App %*
