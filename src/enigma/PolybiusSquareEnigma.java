@@ -5,8 +5,8 @@ import services.EnigmaService;
 
 public class PolybiusSquareEnigma implements EnigmaService {
 
-    public static final boolean KEY_REQUIRED = false;
-    public String name;
+    private static final boolean KEY_REQUIRED = false;
+    private String name;
 
     public PolybiusSquareEnigma() {
         this.name = "PolybiusSquare";
@@ -17,7 +17,11 @@ public class PolybiusSquareEnigma implements EnigmaService {
         String result = "";
         char[] characters = text.toCharArray();
         for (char ch : characters) {
-            result += encryptCharacter(ch);
+            if (Character.toString(ch).equals(" ")) {
+                result += " ";
+            } else {
+                result += encryptCharacter(ch);
+            }
         }
 
         return result;
