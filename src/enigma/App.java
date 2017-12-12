@@ -20,7 +20,7 @@ public class App {
     private void start() {
         repo = new ServiceRepository();
         repo.register(new FakeEnigma("ROT13"));
-        repo.register(new FakeEnigma("FakeEnigma"));
+        repo.register(new AtbashEnigma("AtbashEnigma"));
 
         if (args[0].equals("-l")) {
             for (String s : repo.listAll()) {
