@@ -14,8 +14,13 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public String encipher(String text) {
 
-        encryptCharacter(text.charAt(0));
-        return text;
+        String result = "";
+        char[] characters = text.toCharArray();
+        for (char ch : characters) {
+            result += encryptCharacter(ch);
+        }
+
+        return result;
     }
 
     public static String encryptCharacter(char ch) {
