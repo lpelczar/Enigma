@@ -7,6 +7,12 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = false;
     private String name;
+    private String[] letters = {"A", "B", "C", "D", "E"};
+    private String[][] keySquare = {{"z", "e", "b", "r", "a"},
+                                    {"c", "d", "f", "g", "h"},
+                                    {"i", "k", "l", "m", "n"},
+                                    {"o", "p", "q", "s", "t"},
+                                    {"u", "v", "w", "x", "y"}};
 
     public PolybiusSquareEnigma() {
         this.name = "PolybiusSquare";
@@ -27,36 +33,30 @@ public class PolybiusSquareEnigma implements EnigmaService {
         return result;
     }
 
-    public static String encryptCharacter(char ch) {
-        String[] letters = {"A", "B", "C", "D", "E"};
-        String[][] keySquare = {{"z", "e", "b", "r", "a"},
-                                {"c", "d", "f", "g", "h"},
-                                {"i", "k", "l", "m", "n"},
-                                {"o", "p", "q", "s", "t"},
-                                {"u", "v", "w", "x", "y"}};
+    public String encryptCharacter(char ch) {
+
         int rowNumber = 0;
         int columnNumber = 0;
         String result = "";
 
-        for (int row = 0; row < keySquare.length; row++) {
-            for (int column = 0; column < keySquare[0].length; column++) {
-                if (keySquare[row][column].equals(Character.toString(ch))) {
+        for (int row = 0; row < this.keySquare.length; row++) {
+            for (int column = 0; column < this.keySquare[0].length; column++) {
+                if (this.keySquare[row][column].equals(Character.toString(ch))) {
                     columnNumber = column;
                     rowNumber = row;
-
                 }
             }
         }
 
-        for (int i = 0; i < letters.length; i++) {
+        for (int i = 0; i < this.letters.length; i++) {
             if (i == rowNumber) {
-                result += letters[i];
+                result += this.letters[i];
             }
         }
 
-        for (int i = 0; i < letters.length; i++) {
+        for (int i = 0; i < this.letters.length; i++) {
             if (i == columnNumber) {
-                result += letters[i];
+                result += this.letters[i];
             }
         }
         return result;
