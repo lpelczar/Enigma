@@ -17,7 +17,9 @@ public class AtbashEnigma implements EnigmaService {
         List<Character> enciped = new ArrayList<Character>();
         for(char j : chars){
             int ascii = (int) j;
-            ascii = 219 - ascii;                
+            if(ascii != 32){
+                ascii = 219 - ascii; 
+            }               
             enciped.add((char) ascii);
         }
         StringBuilder output = new StringBuilder(enciped.size());
