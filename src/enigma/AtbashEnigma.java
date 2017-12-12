@@ -28,18 +28,7 @@ public class AtbashEnigma implements EnigmaService {
 	}
 
 	public String decipher(String text){
-        char[] chars = text.toCharArray();
-        List<Character> enciped = new ArrayList<Character>();
-        for(char j : chars){
-            int ascii = (int) j;
-            ascii = 219 - ascii;                
-            enciped.add((char) ascii);
-        }
-        StringBuilder output = new StringBuilder(enciped.size());
-        for(char j : enciped){
-            output.append(j);
-        }
-        return output.toString();
+        return encipher(text);
 }
 
 	public String getName(){
