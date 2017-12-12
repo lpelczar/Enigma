@@ -55,7 +55,39 @@ public class PolybiusSquareEnigma implements EnigmaService {
     }
 
     public String decipher(String text) {
-        return text;
+
+        String result = "";
+        char[] characters = text.toCharArray();
+
+        int row = 0;
+        int column = 0;
+        int i = 0;
+        for (char ch : characters) {
+            if (Character.toString(ch).equals(" ")) {
+                result += " ";
+                continue;
+            } else {
+                if (i % 2 == 0) {
+                    row = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+                } else {
+                    column = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+                }
+                i++;
+            }
+            if (i > 0 && i % 2 == 0) {
+                result += this.keySquare[row][column];
+            }
+        }
+        return result;
+    }
+
+    public Object getKeyFromValue(Map hm, Object value) {
+        for (Object o : hm.keySet()) {
+            if (hm.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
     }
 
     public String getName() {
