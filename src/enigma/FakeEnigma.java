@@ -1,6 +1,7 @@
 package enigma;
 
 import services.EnigmaService;
+import enigma.AtbashEnigma;
 
 public class FakeEnigma implements EnigmaService {
 
@@ -16,7 +17,7 @@ public class FakeEnigma implements EnigmaService {
 	}
 
 	public String decipher(String text){
-	return "dec("+text+")";
+	    return "dec("+text+")";
 }
 
 	public String getName(){
