@@ -1,13 +1,13 @@
 package enigma;
 
 import services.EnigmaService;
-
+import java.util.*;
 
 public class PolybiusSquareEnigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = false;
     private String name;
-    private String[] letters = {"A", "B", "C", "D", "E"};
+    private HashMap<Integer, String> letters = new HashMap<Integer, String>();
     private String[][] keySquare = {{"z", "e", "b", "r", "a"},
                                     {"c", "d", "f", "g", "h"},
                                     {"i", "k", "l", "m", "n"},
@@ -16,6 +16,11 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public PolybiusSquareEnigma() {
         this.name = "PolybiusSquare";
+        this.letters.put(0, "A");
+        this.letters.put(1, "B");
+        this.letters.put(2, "C");
+        this.letters.put(3, "D");
+        this.letters.put(4, "E");
     }
 
     public String encipher(String text) {
@@ -35,30 +40,17 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public String encryptCharacter(char ch) {
 
-        int rowNumber = 0;
-        int columnNumber = 0;
         String result = "";
 
         for (int row = 0; row < this.keySquare.length; row++) {
             for (int column = 0; column < this.keySquare[0].length; column++) {
-                if (this.keySquare[row][column].equals(Character.toString(ch))) {
-                    columnNumber = column;
-                    rowNumber = row;
+                if (this.keySquare[row][column].equals(Character.toString(ch).toLowerCase())) {
+                    result += this.letters.get(row);
+                    result += this.letters.get(column);
                 }
             }
         }
 
-        for (int i = 0; i < this.letters.length; i++) {
-            if (i == rowNumber) {
-                result += this.letters[i];
-            }
-        }
-
-        for (int i = 0; i < this.letters.length; i++) {
-            if (i == columnNumber) {
-                result += this.letters[i];
-            }
-        }
         return result;
     }
 
