@@ -8,6 +8,13 @@ public class PolybiusSquareEnigma implements EnigmaService {
     private static final boolean KEY_REQUIRED = false;
     private String name;
     private HashMap<Integer, String> letters = new HashMap<Integer, String>();
+    {{
+        letters.put(0, "A");
+        letters.put(1, "B");
+        letters.put(2, "C");
+        letters.put(3, "D");
+        letters.put(4, "E");
+    }};
     private String[][] keySquare = {{"z", "e", "b", "r", "a"},
                                     {"c", "d", "f", "g", "h"},
                                     {"i", "k", "l", "m", "n"},
@@ -16,11 +23,6 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public PolybiusSquareEnigma() {
         this.name = "PolybiusSquare";
-        this.letters.put(0, "A");
-        this.letters.put(1, "B");
-        this.letters.put(2, "C");
-        this.letters.put(3, "D");
-        this.letters.put(4, "E");
     }
 
     public String encipher(String text) {
