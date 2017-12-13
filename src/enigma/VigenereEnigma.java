@@ -1,8 +1,12 @@
+package enigma;
+
+import services.EnigmaService;
 import java.util.*;
 
 
-public class VigenereEnigma {
+public class VigenereEnigma implements EnigmaService {
 
+    private static final boolean KEY_REQUIRED = true;
     private char[][] vigenereEnigma;
     private String name;
 
@@ -35,10 +39,22 @@ public class VigenereEnigma {
         }
     }
 
-    public static void main(String[] args) {
-        VigenereEnigma ve = new VigenereEnigma();
-        ve.createVigenereEnigma();
-        System.out.println(ve.vigenereEnigma[3][3]);
+    public String encipher(String text) {
+        return text;
     }
+
+    public String decipher(String text) {
+        return text;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean isKeyRequired() {
+        return KEY_REQUIRED;
+    }
+
+    public void setKey(String key) {}
 
 }
