@@ -9,6 +9,7 @@ public class VigenereEnigma implements EnigmaService {
     private static final boolean KEY_REQUIRED = true;
     private char[][] vigenereTable;
     private String name;
+    private String key;
 
     public VigenereEnigma() {
         this.name = "VigenereEnigma";
@@ -55,6 +56,12 @@ public class VigenereEnigma implements EnigmaService {
         return KEY_REQUIRED;
     }
 
-    public void setKey(String key) {}
+    public void setKey(String key) {
+        if (key.chars().allMatch(Character::isLetter)) {
+            this.key = key.toUpperCase();
+        } else {
+            this.key = null;
+        }
+    }
 
 }
