@@ -30,8 +30,8 @@ public class PolybiusSquareEnigma implements EnigmaService {
         String result = "";
         char[] characters = text.toCharArray();
         for (char ch : characters) {
-            if (Character.toString(ch).equals(" ")) {
-                result += " ";
+            if (!Character.isLetter(ch)) {
+                result += ch;
             } else {
                 result += encryptCharacter(ch);
             }
@@ -83,6 +83,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
         return result;
     }
 
+    @SuppressWarnings("rawtypes")
     public Object getKeyFromValue(Map hm, Object value) {
         for (Object o : hm.keySet()) {
             if (hm.get(o).equals(value)) {
