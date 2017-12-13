@@ -28,7 +28,9 @@ public class PolybiusSquareEnigma implements EnigmaService {
     public String encipher(String text) {
 
         String result = "";
-        char[] characters = text.toCharArray();
+        String message = text.replaceAll("[^a-zA-Z ]", "");
+
+        char[] characters = message.toCharArray();
         for (char ch : characters) {
             if (!Character.isLetter(ch)) {
                 result += ch;
@@ -59,8 +61,10 @@ public class PolybiusSquareEnigma implements EnigmaService {
     public String decipher(String text) {
 
         String result = "";
+        String message = text.replaceAll("[^a-zA-Z ]", "");
         String[] letters = {"A", "B", "C", "D", "E"};
-        char[] characters = text.toCharArray();
+        char[] characters = message.toCharArray();
+        System.out.println(Arrays.toString(characters));
 
         int row = 0;
         int column = 0;
@@ -73,8 +77,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
                     }
                     result += ch;
                     continue;
-                } else if (!Character.isLetter(ch) ||
-                           !Arrays.asList(letters).contains(Character.toString(ch).toUpperCase())){
+                } else if (!Arrays.asList(letters).contains(Character.toString(ch).toUpperCase())){
                     throw new Exception();
                 } else {
                     if (i % 2 == 0) {
