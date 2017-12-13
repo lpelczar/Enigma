@@ -7,20 +7,20 @@ import java.util.*;
 public class VigenereEnigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = true;
-    private char[][] vigenereEnigma;
+    private char[][] vigenereTable;
     private String name;
 
     public VigenereEnigma() {
         this.name = "VigenereEnigma";
     }
 
-    private void createVigenereEnigma() {
+    private void createVigenereTable() {
 
         int NUMBERS_OF_LETTERS_IN_ALPHABET = 26;
         int CAPITAL_LETTERS_IN_ASCII = 65;
         int ROWS = 26;
 		int COLS = 26;
-        vigenereEnigma = new char[ROWS][COLS];
+        vigenereTable = new char[ROWS][COLS];
 
         for (int row = 0; row < ROWS; row++) {
 
@@ -34,7 +34,7 @@ public class VigenereEnigma implements EnigmaService {
 
                 numberOfLetterInAscii += CAPITAL_LETTERS_IN_ASCII;
 
-                vigenereEnigma[row][column] = (char) numberOfLetterInAscii;
+                vigenereTable[row][column] = (char) numberOfLetterInAscii;
             }
         }
     }
