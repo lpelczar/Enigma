@@ -20,6 +20,7 @@ public class App {
     private void start() {
         repo = new ServiceRepository();
         repo.register(new PolybiusSquareEnigma());
+        repo.register(new VigenereEnigma());
         repo.register(new ROT13("ROT13"));
 
         if (args[0].equals("-l")) {
