@@ -59,26 +59,37 @@ public class PolybiusSquareEnigma implements EnigmaService {
     public String decipher(String text) {
 
         String result = "";
+        String[] letters = {"A", "B", "C", "D", "E"};
         char[] characters = text.toCharArray();
 
         int row = 0;
         int column = 0;
         int i = 0;
-        for (char ch : characters) {
-            if (Character.toString(ch).equals(" ")) {
-                result += " ";
-                continue;
-            } else {
-                if (i % 2 == 0) {
-                    row = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+        try {
+            for (char ch : characters) {
+                if (Character.toString(ch).equals(" ")) {
+                    if (i % 2 != 0) {
+                        throw new Exception();
+                    }
+                    result += ch;
+                    continue;
+                } else if (!Character.isLetter(ch) ||
+                           !Arrays.asList(letters).contains(Character.toString(ch).toUpperCase())){
+                    throw new Exception();
                 } else {
-                    column = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+                    if (i % 2 == 0) {
+                        row = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+                    } else {
+                        column = (int) getKeyFromValue(this.letters, Character.toString(ch).toUpperCase());
+                    }
+                    i++;
                 }
-                i++;
+                if (i > 0 && i % 2 == 0) {
+                    result += this.keySquare[row][column];
+                }
             }
-            if (i > 0 && i % 2 == 0) {
-                result += this.keySquare[row][column];
-            }
+        } catch (Exception e) {
+            System.out.println("Your cipher message is incorrect!");
         }
         return result;
     }
