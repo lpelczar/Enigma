@@ -18,15 +18,11 @@ public class AtbashEnigma implements EnigmaService {
         List<Character> enciped = new ArrayList<Character>();
         for(char j : chars){
             int ascii = (int) j;
-            if(ascii != 32){
-                ascii = 219 - ascii; 
-            }               
+            if(ascii != 32) ascii = 219 - ascii;               
             enciped.add((char) ascii);
         }
         StringBuilder output = new StringBuilder(enciped.size());
-        for(char j : enciped){
-            output.append(j);
-        }
+        for(char j : enciped) output.append(j);
         return output.toString().toUpperCase();
 	}
 
@@ -43,6 +39,5 @@ public class AtbashEnigma implements EnigmaService {
 	}
 
 	public void setKey(String key) {}
-
 
 }
