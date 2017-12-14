@@ -6,7 +6,6 @@ public class ROT13Enigma implements EnigmaService {
 
     public static final boolean KEY_REQUIRED = false;
     private static final String NAME = "ROT13Enigma";
-    private String name;
 
     public String encipher(String text){
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
@@ -32,7 +31,7 @@ public class ROT13Enigma implements EnigmaService {
 }
 
     public String getName(){
-        return this.name;
+        return this.NAME;
     }
 
     public boolean isKeyRequired(){

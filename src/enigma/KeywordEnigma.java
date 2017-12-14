@@ -8,7 +8,6 @@ public class KeywordEnigma implements EnigmaService {
 
     public static final boolean KEY_REQUIRED = true;
     private static final String NAME = "KeywordEnigma";
-    private String name;
     private String key;
 
 
@@ -70,7 +69,7 @@ public class KeywordEnigma implements EnigmaService {
 }
 
     public String getName(){
-        return this.name;
+        return this.NAME;
     }
 
     public boolean isKeyRequired(){
