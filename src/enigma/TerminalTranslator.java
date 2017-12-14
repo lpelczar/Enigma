@@ -10,6 +10,7 @@ public class TerminalTranslator implements Module {
 
     private ServiceProvider provider;
     private String[] args;
+    private EnigmaService enigma;
 
     public void initialize(ServiceProvider provider) {
         this.provider = provider;
@@ -37,32 +38,36 @@ public class TerminalTranslator implements Module {
                 return;
             }
 
-            EnigmaService enigma = provider.getByName(enigmaName);
+            this.enigma = provider.getByName(enigmaName);
 
-            if (enigma.isKeyRequired() && this.args.length < 3) {
+            if (this.enigma.isKeyRequired() && this.args.length < 3) {
                 System.out.println("You need to enter a key!");
                 return;
             }
-            if (!enigma.isKeyRequired() && this.args.length == 3) {
+            if (!this.enigma.isKeyRequired() && this.args.length == 3) {
                 System.out.println("Key is not needed for this cipher!");
                 return;
             }
 
             if (this.args.length == 3) {
                 String key = this.args[2];
-                enigma.setKey(key);
+                this.enigma.setKey(key);
             }
 
-            Scanner scan = new Scanner(System.in);
-            while (scan.hasNextLine()) {
-                if (this.args[0].equals("-e")) {
-                    System.out.println(enigma.encipher(scan.nextLine()));
-                } else if (this.args[0].equals("-d")) {
-                    System.out.println(enigma.decipher((scan.nextLine())));
+            translateInput();
 
-                }
+        }
+    }
+
+    public void translateInput() {
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNextLine()) {
+            if (this.args[0].equals("-e")) {
+                System.out.println(this.enigma.encipher(scan.nextLine()));
+            } else if (this.args[0].equals("-d")) {
+                System.out.println(this.enigma.decipher(scan.nextLine()));
+
             }
-
         }
     }
 }
