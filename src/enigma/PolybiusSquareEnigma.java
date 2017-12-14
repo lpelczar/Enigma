@@ -6,7 +6,7 @@ import java.util.*;
 public class PolybiusSquareEnigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = false;
-    private String name;
+    private static final String NAME = "PolybiusSquareEnigma";
     private HashMap<Integer, String> letters = new HashMap<Integer, String>();
     {{
         letters.put(0, "A");
@@ -20,10 +20,6 @@ public class PolybiusSquareEnigma implements EnigmaService {
                                     {"i", "k", "l", "m", "n"},
                                     {"o", "p", "q", "s", "t"},
                                     {"u", "v", "w", "x", "y"}};
-
-    public PolybiusSquareEnigma() {
-        this.name = "PolybiusSquareEnigma";
-    }
 
     public String encipher(String text) {
 
@@ -103,7 +99,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
     }
 
     public String getName() {
-        return this.name;
+        return NAME;
     }
 
     public boolean isKeyRequired() {

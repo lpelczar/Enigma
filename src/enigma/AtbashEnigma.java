@@ -6,11 +6,7 @@ import services.EnigmaService;
 public class AtbashEnigma implements EnigmaService {
 
 	public static final boolean KEY_REQUIRED = false;
-	private String name;
-
-	public AtbashEnigma(String name){
-		this.name = name;
-	}
+	private static final String NAME = "AtbashEnigma";
 
 	public String encipher(String text){
         text = text.replaceAll("[^a-zA-Z ]", "").toLowerCase();
@@ -18,7 +14,7 @@ public class AtbashEnigma implements EnigmaService {
         List<Character> enciped = new ArrayList<Character>();
         for(char j : chars){
             int ascii = (int) j;
-            if(ascii != 32) ascii = 219 - ascii;               
+            if(ascii != 32) ascii = 219 - ascii;
             enciped.add((char) ascii);
         }
         StringBuilder output = new StringBuilder(enciped.size());
@@ -31,7 +27,7 @@ public class AtbashEnigma implements EnigmaService {
 }
 
 	public String getName(){
-		return this.name;
+		return NAME;
 	}
 
 	public boolean isKeyRequired(){

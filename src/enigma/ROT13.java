@@ -5,11 +5,7 @@ import services.EnigmaService;
 public class ROT13 implements EnigmaService {
 
     public static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
-    private String name;        //deklaruje zmienna name
-
-    public ROT13(String name){
-        this.name = name;
-    }
+    private static final String NAME = "ROT13Enigma";        //deklaruje zmienna name
 
     public String encipher(String text){
         StringBuilder enc_text = new StringBuilder(""); // String en_text = ''
@@ -40,7 +36,7 @@ public class ROT13 implements EnigmaService {
 }
 
     public String getName(){
-        return this.name;
+        return NAME;
     }
 
     public boolean isKeyRequired(){

@@ -28,8 +28,8 @@ public class App {
             repo = new ServiceRepository();
             repo.register(new PolybiusSquareEnigma());
             repo.register(new VigenereEnigma());
-            repo.register(new ROT13("ROT13"));
-            repo.register(new AtbashEnigma("AtbashEnigma"));
+            repo.register(new ROT13());
+            repo.register(new AtbashEnigma());
 
             if (args[0].equals("-l")) {
                 System.out.println(Colors.ANSI_BLUE + "List of available Enigmas:" + Colors.ANSI_RESET);

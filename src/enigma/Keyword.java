@@ -7,13 +7,8 @@ import services.EnigmaService;
 public class Keyword implements EnigmaService {
 
     public static final boolean KEY_REQUIRED = true; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
-    private String name;        //deklaruje zmienna name
+    private static final String NAME = "KeywordEnigma";        //deklaruje zmienna name
     private String key;
-
-    public Keyword(String name){
-        this.name = name;
-        this.key = key;
-    }
 
     public String encipher_alphabet(String key){
 		char[] keyword_alphabet = new char[26];
@@ -39,7 +34,7 @@ public class Keyword implements EnigmaService {
 }
 
     public String getName(){
-        return this.name;
+        return NAME;
     }
 
     public boolean isKeyRequired(){

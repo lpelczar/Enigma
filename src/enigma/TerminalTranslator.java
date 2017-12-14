@@ -74,7 +74,7 @@ public class TerminalTranslator implements Module {
             } else if (this.args[0].equals("-d")) {
                 System.out.println(this.enigma.decipher(scan.nextLine()));
             }
-            System.out.print("Enter text: ");
+            System.out.print(Colors.ANSI_BLUE + "Enter text: " + Colors.ANSI_RESET);
         }
     }
 }

@@ -8,13 +8,12 @@ public class VigenereEnigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = true;
     private char[][] vigenereTable;
-    private String name;
+    private static final String NAME = "VigenereEnigma";;
     private String key;
     private final int CAPITAL_LETTERS_IN_ASCII_POSITION = 65;
     private final int NUMBERS_OF_LETTERS_IN_ALPHABET = 26;
 
     public VigenereEnigma() {
-        this.name = "VigenereEnigma";
         createVigenereTable();
     }
 
@@ -102,7 +101,7 @@ public class VigenereEnigma implements EnigmaService {
     }
 
     public String getName() {
-        return this.name;
+        return NAME;
     }
 
     public boolean isKeyRequired() {
