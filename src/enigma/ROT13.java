@@ -12,7 +12,7 @@ public class ROT13 implements EnigmaService {
     }
 
     public String encipher(String text){
-        StringBuilder enc_text = new StringBuilder("Result: "); // String en_text = ''
+        StringBuilder enc_text = new StringBuilder(""); // String en_text = ''
         int shift = 13;
         int len = text.length();
         for (int x = 0; x < len; x++){
