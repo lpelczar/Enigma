@@ -44,7 +44,7 @@ public class VigenereEnigma implements EnigmaService {
 
     public String encipher(String text) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         String keyChain = "";
         char[] header = createHeader();
@@ -55,19 +55,19 @@ public class VigenereEnigma implements EnigmaService {
 
         for (int i = 0; i < message.length(); i++) {
             if (Character.toString(message.charAt(i)).equals(" ")) {
-                result += " ";
+                result.append(" ");
                 continue;
             }
             row = Arrays.binarySearch(header, keyChain.charAt(i));
             column = Arrays.binarySearch(header, Character.toUpperCase(message.charAt(i)));
-            result += this.vigenereTable[column][row];
+            result.append(this.vigenereTable[column][row]);
         }
-        return result;
+        return result.toString();
     }
 
     public String decipher(String text) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         String keyChain = "";
         char[] header = createHeader();
@@ -78,15 +78,15 @@ public class VigenereEnigma implements EnigmaService {
 
         for (int i = 0; i < message.length(); i++) {
             if (Character.toString(message.charAt(i)).equals(" ")) {
-                result += " ";
+                result.append(" ");
                 continue;
             }
             row = Arrays.binarySearch(header, keyChain.charAt(i));
             column = new String(this.vigenereTable[row]).indexOf(message.charAt(i));
-            result += header[column];
+            result.append(header[column]);
         }
 
-        return result;
+        return result.toString();
     }
 
     private char[] createHeader() {
@@ -112,7 +112,7 @@ public class VigenereEnigma implements EnigmaService {
     public void setKey(String key) {
         if (key.chars().allMatch(Character::isLetter)) {
             this.key = key.toUpperCase();
-        } 
+        }
     }
 
 }
