@@ -21,6 +21,7 @@ public class App {
         if (this.args.length == 0) {
 
             System.out.println("Please enter following commands: -e | -d (enciper/decipher) CIPHER [KEY]");
+
         } else {
 
             repo = new ServiceRepository();

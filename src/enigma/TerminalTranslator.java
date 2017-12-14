@@ -28,25 +28,32 @@ public class TerminalTranslator implements Module {
             System.out.println("Incorrect commands!");
 
         } else {
+
             String mode = this.args[0];
             String enigmaName = this.args[1];
             EnigmaService enigma = provider.getByName(enigmaName);
 
-            if (this.args.length == 3) {
-                String key = this.args[2];
-                enigma.setKey(key);
-            }
+            if (enigma.isKeyRequired() && this.args.length < 3) {
+                System.out.println("You need to enter a key!");
+            } else if (!enigma.isKeyRequired() && this.args.length == 3) {
+                System.out.println("Key is not needed for this cipher!");
+            } else {
 
-            Scanner scan = new Scanner(System.in);
-            while (scan.hasNextLine()) {
-                if (this.args[0].equals("-e")) {
-                    System.out.println(enigma.encipher(scan.nextLine()));
-                } else if (this.args[0].equals("-d")) {
-                    System.out.println(enigma.decipher((scan.nextLine())));
+                if (this.args.length == 3) {
+                    String key = this.args[2];
+                    enigma.setKey(key);
+                }
 
+                Scanner scan = new Scanner(System.in);
+                while (scan.hasNextLine()) {
+                    if (this.args[0].equals("-e")) {
+                        System.out.println(enigma.encipher(scan.nextLine()));
+                    } else if (this.args[0].equals("-d")) {
+                        System.out.println(enigma.decipher((scan.nextLine())));
+
+                    }
                 }
             }
-
         }
     }
 }
