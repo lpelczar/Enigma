@@ -22,6 +22,7 @@ public class KeywordEnigma implements EnigmaService {
 		    while (key.contains(String.valueOf(++c)));
 		keywordAlphabet[i] = c;
 		}
+        //System.out.println(keywordAlphabet);
         return keywordAlphabet;
 	}
 
@@ -30,6 +31,7 @@ public class KeywordEnigma implements EnigmaService {
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         String encText = "";
         char[] encAlphabet = encipherAlphabet(this.key);
+        
         for (int i = 0; i < message.length(); i++){
             char letter = message.charAt(i);
             if (letter >='A' && letter <='Z'){
@@ -45,18 +47,21 @@ public class KeywordEnigma implements EnigmaService {
     }
 
 	public String decipher(String text){
-
+        int asciiValue = 65;
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         char[] encAlphabet = encipherAlphabet(this.key);
         String decText = "";
         char [] plainAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-        String encText = encipher(message);
-
         for (int i = 0; i < message.length(); i++){
-            char encLetter = encText.charAt(i);
             char letter = message.charAt(i);
+            int pos = 0;
             if (letter >='A' && letter <='Z'){
-                int pos = letter - encLetter;
+                for(int j=0;j<encAlphabet.length;j++){
+                    if(encAlphabet[j] == letter){
+                        pos = j;
+                        break;
+                    }
+                }
                 decText += plainAlphabet[pos];
             }
             else
