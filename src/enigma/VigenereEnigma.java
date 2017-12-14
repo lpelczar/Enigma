@@ -110,9 +110,7 @@ public class VigenereEnigma implements EnigmaService {
     }
 
     public void setKey(String key) {
-        if (key.chars().allMatch(Character::isLetter)) {
-            this.key = key.toUpperCase();
-        }
+        this.key = key;
     }
 
 }
