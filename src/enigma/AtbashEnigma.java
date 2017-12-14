@@ -13,7 +13,7 @@ public class AtbashEnigma implements EnigmaService {
 	}
 
 	public String encipher(String text){
-        text = text.replaceAll("[^a-zA-Z ]", "");
+        text = text.replaceAll("[^a-zA-Z ]", "").toLowerCase();
         char[] chars = text.toCharArray();
         List<Character> enciped = new ArrayList<Character>();
         for(char j : chars){
@@ -27,7 +27,7 @@ public class AtbashEnigma implements EnigmaService {
         for(char j : enciped){
             output.append(j);
         }
-        return output.toString();
+        return output.toString().toUpperCase();
 	}
 
 	public String decipher(String text){
