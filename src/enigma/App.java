@@ -30,7 +30,6 @@ public class App {
             return;
         }
 
-
         Module module = new TerminalTranslator(args);
         module.initialize(repo);
         module.start();

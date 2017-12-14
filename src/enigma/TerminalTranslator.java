@@ -24,18 +24,29 @@ public class TerminalTranslator implements Module {
     }
 
     public void start() {
-        String mode = args[0];
-        String enigmaName = args[1];
-        EnigmaService enigma = provider.getByName(enigmaName);
+        if (this.args.length > 3 || this.args.length <= 1) {
+            System.out.println("Incorrect commands!");
 
-        Scanner scan = new Scanner(System.in);
-        while (scan.hasNextLine()) {
-            if (this.args[0].equals("-e")) {
-                System.out.println(enigma.encipher(scan.nextLine()));
-            } else if (this.args[0].equals("-d")) {
-                System.out.println(enigma.decipher((scan.nextLine())));
+        } else {
+            String mode = this.args[0];
+            String enigmaName = this.args[1];
+            EnigmaService enigma = provider.getByName(enigmaName);
 
+            if (this.args.length == 3) {
+                String key = this.args[2];
+                enigma.setKey(key);
             }
+
+            Scanner scan = new Scanner(System.in);
+            while (scan.hasNextLine()) {
+                if (this.args[0].equals("-e")) {
+                    System.out.println(enigma.encipher(scan.nextLine()));
+                } else if (this.args[0].equals("-d")) {
+                    System.out.println(enigma.decipher((scan.nextLine())));
+
+                }
+            }
+
         }
     }
 }
