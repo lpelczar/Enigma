@@ -25,11 +25,10 @@ public class TerminalTranslator implements Module {
     }
 
     public void start() {
+
         if (this.args.length > 3 || this.args.length <= 1) {
             System.out.println("Incorrect commands!");
-
         } else {
-
             String mode = this.args[0];
             String enigmaName = this.args[1];
 
