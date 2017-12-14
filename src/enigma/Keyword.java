@@ -6,7 +6,7 @@ import services.EnigmaService;
 
 public class Keyword implements EnigmaService {
 
-    public static final boolean KEY_REQUIRED = true; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
+    private static final boolean KEY_REQUIRED = true; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
     private static final String NAME = "KeywordEnigma";        //deklaruje zmienna name
     private String key;
 

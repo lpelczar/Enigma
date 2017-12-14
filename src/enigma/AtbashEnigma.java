@@ -5,7 +5,7 @@ import services.EnigmaService;
 
 public class AtbashEnigma implements EnigmaService {
 
-	public static final boolean KEY_REQUIRED = false;
+	private static final boolean KEY_REQUIRED = false;
 	private static final String NAME = "AtbashEnigma";
 
 	public String encipher(String text){

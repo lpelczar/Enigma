@@ -4,7 +4,7 @@ import services.EnigmaService;
 
 public class ROT13 implements EnigmaService {
 
-    public static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
+    private static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
     private static final String NAME = "ROT13Enigma";        //deklaruje zmienna name
 
     public String encipher(String text){
