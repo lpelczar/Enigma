@@ -27,24 +27,24 @@ public class TerminalTranslator implements Module {
     public void start() {
 
         if (this.args.length > 3 || this.args.length <= 1) {
-            System.out.println("Incorrect commands!");
+            System.out.println(Colors.ANSI_RED + "Incorrect commands!" + Colors.ANSI_RESET);
         } else {
             String mode = this.args[0];
             String enigmaName = this.args[1];
 
             if (provider.getByName(enigmaName) == null) {
-                System.out.println("Enigma does not exist!");
+                System.out.println(Colors.ANSI_RED + "Enigma does not exist!" + Colors.ANSI_RESET);
                 return;
             }
 
             this.enigma = provider.getByName(enigmaName);
 
             if (this.enigma.isKeyRequired() && this.args.length < 3) {
-                System.out.println("You need to enter a key!");
+                System.out.println(Colors.ANSI_RED + "You need to enter a key!" + Colors.ANSI_RESET);
                 return;
             }
             if (!this.enigma.isKeyRequired() && this.args.length == 3) {
-                System.out.println("Key is not needed for this cipher!");
+                System.out.println(Colors.ANSI_RED + "Key is not needed for this cipher!" + Colors.ANSI_RESET);
                 return;
             }
 
