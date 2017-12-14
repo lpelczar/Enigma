@@ -14,15 +14,12 @@ public class KeywordEnigma implements EnigmaService {
     public char[] encipherAlphabet(String key){
         int alphabetLength = 26;
 		char[] keywordAlphabet = new char[alphabetLength];
-		for (int i = 0; i < key.length(); i++) {
-		    keywordAlphabet[i] = key.charAt(i);
-		}
+		for (int i = 0; i < key.length(); i++) keywordAlphabet[i] = key.charAt(i);
 		char c = 'A' - 1;
 		for (int i = key.length(); i < alphabetLength; i++) {
 		    while (key.contains(String.valueOf(++c)));
 		keywordAlphabet[i] = c;
 		}
-        //System.out.println(keywordAlphabet);
         return keywordAlphabet;
 	}
 
@@ -38,10 +35,7 @@ public class KeywordEnigma implements EnigmaService {
                 int pos = letter - asciiValue;
                 encText += encAlphabet[pos];
             }
-            else
-            {
-                encText += letter;
-            }
+            else encText += letter;
         }
         return encText;
     }
@@ -64,11 +58,7 @@ public class KeywordEnigma implements EnigmaService {
                 }
                 decText += plainAlphabet[pos];
             }
-            else
-            {
-                decText += letter;
-
-            }
+            else decText += letter;
         }
         return decText;
 }
@@ -83,5 +73,5 @@ public class KeywordEnigma implements EnigmaService {
 
     public void setKey(String key) {
             this.key = key.toUpperCase();
-        }
+    }
 }
