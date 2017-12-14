@@ -4,22 +4,21 @@ import services.EnigmaService;
 
 public class ROT13Enigma implements EnigmaService {
 
-    private static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
-    private static final String NAME = "ROT13Enigma";        //deklaruje zmienna name
+    public static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
+    private String name;        //deklaruje zmienna name
+
+    public ROT13Enigma(String name){
+        this.name = name;
+    }
 
     public String encipher(String text){
+        String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         StringBuilder enc_text = new StringBuilder(""); // String en_text = ''
         int shift = 13;
-        int len = text.length();
+        int len = message.length();
         for (int x = 0; x < len; x++){
-            char letter = text.charAt(x);
-            if (letter >= 'a' && letter <= 'z') {    //na pewno da się skrócić if ((Character.isLowerCase) ||
-                if (letter > 'm') {                     //(Character.isUpperCase
-                    letter -= shift;
-                } else {
-                    letter += shift;
-                }
-            } else if (letter >= 'A' && letter <= 'Z'){
+            char letter = message.charAt(x);
+            }if (letter >= 'A' && letter <= 'Z'){
                 if (letter > 'M') {
                     letter -= shift;
                 } else {
@@ -36,7 +35,7 @@ public class ROT13Enigma implements EnigmaService {
 }
 
     public String getName(){
-        return NAME;
+        return this.name;
     }
 
     public boolean isKeyRequired(){
