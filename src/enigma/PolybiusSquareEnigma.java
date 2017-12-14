@@ -27,19 +27,19 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public String encipher(String text) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String message = text.replaceAll("[^a-zA-Z ]", "");
 
         char[] characters = message.toCharArray();
         for (char ch : characters) {
             if (!Character.isLetter(ch)) {
-                result += ch;
+                result.append(ch);
             } else {
-                result += encryptCharacter(ch);
+                result.append(encryptCharacter(ch));
             }
         }
 
-        return result;
+        return result.toString();
     }
 
     public String encryptCharacter(char ch) {
@@ -60,11 +60,10 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     public String decipher(String text) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String message = text.replaceAll("[^a-zA-Z ]", "");
         String[] letters = {"A", "B", "C", "D", "E"};
         char[] characters = message.toCharArray();
-        System.out.println(Arrays.toString(characters));
 
         int row = 0;
         int column = 0;
@@ -75,7 +74,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
                     if (i % 2 != 0) {
                         throw new Exception();
                     }
-                    result += ch;
+                    result.append(ch);
                     continue;
                 } else if (!Arrays.asList(letters).contains(Character.toString(ch).toUpperCase())){
                     throw new Exception();
@@ -88,13 +87,13 @@ public class PolybiusSquareEnigma implements EnigmaService {
                     i++;
                 }
                 if (i > 0 && i % 2 == 0) {
-                    result += this.keySquare[row][column];
+                    result.append(this.keySquare[row][column]);
                 }
             }
         } catch (Exception e) {
             System.out.println("Your cipher message is incorrect!");
         }
-        return result;
+        return result.toString();
     }
 
     @SuppressWarnings("rawtypes")

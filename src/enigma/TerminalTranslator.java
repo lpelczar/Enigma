@@ -26,9 +26,7 @@ public class TerminalTranslator implements Module {
     public void start() {
         String mode = args[0];
         String enigmaName = args[1];
-        String key = args[2];
         EnigmaService enigma = provider.getByName(enigmaName);
-        enigma.setKey(key);
 
         Scanner scan = new Scanner(System.in);
         while (scan.hasNextLine()) {
