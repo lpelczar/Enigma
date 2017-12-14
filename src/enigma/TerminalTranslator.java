@@ -66,13 +66,16 @@ public class TerminalTranslator implements Module {
 
     public void translateInput() {
         Scanner scan = new Scanner(System.in);
+        System.out.print("Enter text: ");
         while (scan.hasNextLine()) {
+
             if (this.args[0].equals("-e")) {
+                System.out.print("Enciphered text: ");
                 System.out.println(this.enigma.encipher(scan.nextLine()));
             } else if (this.args[0].equals("-d")) {
                 System.out.println(this.enigma.decipher(scan.nextLine()));
-
             }
+            System.out.print("Enter text: ");
         }
     }
 }

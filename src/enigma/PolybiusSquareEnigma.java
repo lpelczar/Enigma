@@ -22,7 +22,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
                                     {"u", "v", "w", "x", "y"}};
 
     public PolybiusSquareEnigma() {
-        this.name = "PolybiusSquare";
+        this.name = "PolybiusSquareEnigma";
     }
 
     public String encipher(String text) {
@@ -97,7 +97,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
     }
 
     @SuppressWarnings("rawtypes")
-    public Object getKeyFromValue(Map hm, Object value) {
+    private Object getKeyFromValue(Map hm, Object value) {
         for (Object o : hm.keySet()) {
             if (hm.get(o).equals(value)) {
                 return o;
