@@ -18,6 +18,7 @@ public class App {
     }
 
     private void start() {
+
         if (this.args.length == 0) {
 
             System.out.println("Please enter following commands: -e | -d (enciper/decipher) CIPHER [KEY]");
