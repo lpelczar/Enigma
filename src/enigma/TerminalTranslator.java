@@ -31,29 +31,38 @@ public class TerminalTranslator implements Module {
 
             String mode = this.args[0];
             String enigmaName = this.args[1];
+
+            if (provider.getByName(enigmaName) == null) {
+                System.out.println("Enigma does not exist!");
+                return;
+            }
+
             EnigmaService enigma = provider.getByName(enigmaName);
 
             if (enigma.isKeyRequired() && this.args.length < 3) {
                 System.out.println("You need to enter a key!");
-            } else if (!enigma.isKeyRequired() && this.args.length == 3) {
+                return;
+            }
+            if (!enigma.isKeyRequired() && this.args.length == 3) {
                 System.out.println("Key is not needed for this cipher!");
-            } else {
+                return;
+            }
 
-                if (this.args.length == 3) {
-                    String key = this.args[2];
-                    enigma.setKey(key);
-                }
+            if (this.args.length == 3) {
+                String key = this.args[2];
+                enigma.setKey(key);
+            }
 
-                Scanner scan = new Scanner(System.in);
-                while (scan.hasNextLine()) {
-                    if (this.args[0].equals("-e")) {
-                        System.out.println(enigma.encipher(scan.nextLine()));
-                    } else if (this.args[0].equals("-d")) {
-                        System.out.println(enigma.decipher((scan.nextLine())));
+            Scanner scan = new Scanner(System.in);
+            while (scan.hasNextLine()) {
+                if (this.args[0].equals("-e")) {
+                    System.out.println(enigma.encipher(scan.nextLine()));
+                } else if (this.args[0].equals("-d")) {
+                    System.out.println(enigma.decipher((scan.nextLine())));
 
-                    }
                 }
             }
+
         }
     }
 }
