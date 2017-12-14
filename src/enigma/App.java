@@ -30,6 +30,8 @@ public class App {
             repo.register(new VigenereEnigma());
             repo.register(new ROT13Enigma());
             repo.register(new AtbashEnigma());
+            repo.register(new KeywordEnigma());
+
 
             if (args[0].equals("-l")) {
                 System.out.println(Colors.ANSI_BLUE + "List of available Enigmas:" + Colors.ANSI_RESET);
