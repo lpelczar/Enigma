@@ -28,8 +28,9 @@ public class App {
             repo = new ServiceRepository();
             repo.register(new PolybiusSquareEnigma());
             repo.register(new VigenereEnigma());
-            repo.register(new ROT13("ROT13"));
+            repo.register(new ROT13Enigma("ROT13Enigma"));
             repo.register(new AtbashEnigma("AtbashEnigma"));
+            repo.register(new KeywordEnigma("KeywordEnigma"));
 
             if (args[0].equals("-l")) {
                 for (String s : repo.listAll()) {
