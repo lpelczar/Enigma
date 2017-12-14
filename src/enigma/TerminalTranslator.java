@@ -50,8 +50,13 @@ public class TerminalTranslator implements Module {
             }
 
             if (this.args.length == 3) {
-                String key = this.args[2];
-                this.enigma.setKey(key);
+                if (this.args[2].chars().allMatch(Character::isLetter)) {
+                    String key = this.args[2];
+                    this.enigma.setKey(key.toUpperCase());
+                } else {
+                    System.out.println("Key need to contain only letters!");
+                    return;
+                }
             }
 
             translateInput();
