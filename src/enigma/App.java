@@ -32,10 +32,11 @@ public class App {
             repo.register(new AtbashEnigma("AtbashEnigma"));
 
             if (args[0].equals("-l")) {
-                System.out.println("List of available Enigmas:");
+                System.out.println(Colors.ANSI_BLUE + "List of available Enigmas:" + Colors.ANSI_RESET);
                 int index = 1;
                 for (String s : repo.listAll()) {
-                    System.out.println(index + ". " + s);
+                    System.out.println(Colors.ANSI_BLUE + index + ". " + Colors.ANSI_RESET +
+                                       Colors.ANSI_GREEN + s + Colors.ANSI_RESET);
                     index++;
                 }
                 return;
