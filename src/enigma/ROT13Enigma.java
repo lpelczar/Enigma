@@ -2,7 +2,7 @@ package enigma;
 
 import services.EnigmaService;
 
-public class ROT13 implements EnigmaService {
+public class ROT13Enigma implements EnigmaService {
 
     private static final boolean KEY_REQUIRED = false; //publiczna statyczna zmienna ktorej wartosc sie nie zmieni
     private static final String NAME = "ROT13Enigma";        //deklaruje zmienna name

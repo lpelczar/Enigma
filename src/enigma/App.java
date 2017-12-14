@@ -28,7 +28,7 @@ public class App {
             repo = new ServiceRepository();
             repo.register(new PolybiusSquareEnigma());
             repo.register(new VigenereEnigma());
-            repo.register(new ROT13());
+            repo.register(new ROT13Enigma());
             repo.register(new AtbashEnigma());
 
             if (args[0].equals("-l")) {
