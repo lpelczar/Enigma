@@ -98,11 +98,7 @@ public class PolybiusSquareEnigma implements EnigmaService {
 
     @SuppressWarnings("rawtypes")
     public Object getKeyFromValue(Map hm, Object value) {
-        for (Object o : hm.keySet()) {
-            if (hm.get(o).equals(value)) {
-                return o;
-            }
-        }
+        for (Object o : hm.keySet()) if (hm.get(o).equals(value)) return o;
         return null;
     }
 
