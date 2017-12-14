@@ -13,6 +13,7 @@ public class AtbashEnigma implements EnigmaService {
 	}
 
 	public String encipher(String text){
+        text = text.replaceAll("[^a-zA-Z ]", "");
         char[] chars = text.toCharArray();
         List<Character> enciped = new ArrayList<Character>();
         for(char j : chars){
