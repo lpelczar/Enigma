@@ -31,7 +31,7 @@ public class ROT13Enigma implements EnigmaService {
 }
 
     public String getName(){
-        return this.NAME;
+        return NAME;
     }
 
     public boolean isKeyRequired(){

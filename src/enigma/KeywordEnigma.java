@@ -28,7 +28,7 @@ public class KeywordEnigma implements EnigmaService {
         String message = text.toUpperCase().replaceAll("[^a-zA-Z ]", "");
         String encText = "";
         char[] encAlphabet = encipherAlphabet(this.key);
-        
+
         for (int i = 0; i < message.length(); i++){
             char letter = message.charAt(i);
             if (letter >='A' && letter <='Z'){
@@ -64,7 +64,7 @@ public class KeywordEnigma implements EnigmaService {
 }
 
     public String getName(){
-        return this.NAME;
+        return NAME;
     }
 
     public boolean isKeyRequired(){
