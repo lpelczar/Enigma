@@ -4,7 +4,7 @@
 
 Diagram of project’s main functionality -- reading text from standard input, processing it (enciphering/deciphering) and printing the result to standard output:
 
-![c1](http://i65.tinypic.com/2ex7ocx.png)
+![c1](https://raw.github.com/lpelczar/Enigma/master/docs/Enigma_UML.png)
 
 This requires implementing:
 
